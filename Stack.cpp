@@ -6,7 +6,8 @@ struct Node {
 };
 
 Stack::Stack() {
-  // TODO.
+  _top = new Node();
+  _count = 0;
 }
 
 void Stack::push(unsigned elem) {
