@@ -25,7 +25,8 @@ void Stack::push(unsigned elem) {
 }
 
 void Stack::pop() {
-  // TODO.
+ _top->next->elem = _top->elem;
+ _top->next->next = _top->next;
 }
 
 unsigned Stack::top() const {
