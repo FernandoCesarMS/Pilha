@@ -1,8 +1,17 @@
 #include "Stack.h"
+#include <iostream>
 
 struct Node{
   unsigned elem;
   Node *next;
+  Node(){
+      elem = 0;
+      next = NULL;
+  }
+  Node(unsigned a,Node* b){
+      elem = a;
+      next = b;
+  }
 };
 
 Stack::Stack(){
@@ -11,26 +20,24 @@ Stack::Stack(){
 }
 
 void Stack::push(unsigned elem){
-  if (_count == 0){
-    _top->elem = elem;
-    _count++;
+  if (_count == 0)
+    _top = new Node(elem,NULL);
+  else if (_count == 1){
+      _top->next = new Node(_top->elem,NULL);
+      _top->elem = elem;
   }
   else{
-    Node *aux;
-    aux->elem = _top->elem;
-    aux->next = _top->next;
-    _top->next = aux;
+    _top->next = new Node(_top->elem,_top->next->next);
     _top->elem = elem;
-    _count++;
   }
+  _count++;
 }
 
 void Stack::pop(){
   if (_count == 0)
     throw EmptyException();
   else{
-    _top->next->elem = _top->elem;
-    _top->next->next = _top->next;
+      _top->elem = _top->next->elem;
     _count--;
   }
 }
