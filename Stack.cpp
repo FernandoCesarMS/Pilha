@@ -30,9 +30,9 @@ void Stack::pop() {
 }
 
 unsigned Stack::top() const {
-  return _top->elem;  // TODO.
+  return _top->elem;  
 }
 
 unsigned Stack::count() const {
-  return 0;  // TODO.
+  return count; 
 }
