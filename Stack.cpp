@@ -11,7 +11,17 @@ Stack::Stack() {
 }
 
 void Stack::push(unsigned elem) {
-  // TODO.
+  if (_count == 0){
+    _top->elem = elem;
+    _count++;
+  }
+  else{
+    Node* aux;
+    aux->elem = _top->elem;
+    aux->next = _top->next;
+    _top->next = aux;
+    _top->elem = elem;
+  }
 }
 
 void Stack::pop() {
